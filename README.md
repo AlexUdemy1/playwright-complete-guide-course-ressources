@@ -7,9 +7,11 @@ If you run into any issues with the code, feel free to ask for help in the cours
 ## Repository Content
 Code Snapshots: The /code folder includes various snapshots (starting, intermediate, and final) for different sections of the course.
 
-### Lecture Attachments: Any standalone code files or additional materials referenced in the lectures are stored in the /attachments folder.
+### Lecture Attachments: 
+Any standalone code files or additional materials referenced in the lectures are stored in the /attachments folder.
 
-### Other Resources: Additional resources, such as course slides, are available in the /other folder.
+### Other Resources: 
+Additional resources, such as course slides, are available in the /other folder.
 
 Each course section has its own subfolder inside the Code Snapshots and Lecture Attachments folders, making it easy to find the resources for a specific topic.
 
