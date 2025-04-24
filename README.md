@@ -19,3 +19,16 @@ Each course section has its own subfolder inside the Code Snapshots and Lecture 
 Code snapshots help set up the working environment for the labs. The final snapshots are also useful for comparing your work with the examples from the course. These snapshots come directly from the course recordings and match the code shown in the videos.
 
 You can also run the code snapshots on your local machine. For that you will have to follow the labs and course in order to initialise and run the snapshots.
+
+
+## After Downloading a Ressource
+
+If you need the ressources, you will need to install the required packages for your code to run.
+
+To do so, open a Terminal into your IDE after uploading on of the ressource, and run the following command : 
+
+```bash
+npm install
+```
+
+Then you can proceed with the course
