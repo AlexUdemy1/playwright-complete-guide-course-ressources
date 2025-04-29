@@ -153,6 +153,7 @@ const App = () => {
         <input
           type="date"
           id="datepicker"
+          data-testid="datepicker"
           name="date"
           value={formData.date}
           onChange={handleInputChange}
