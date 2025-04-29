@@ -85,7 +85,7 @@ const App = () => {
 
   return (
     <div className="min-h-screen min-w-screen flex flex-col items-center justify-center text-black bg-gray-100">
-      <h1 className="text-2xl font-bold mb-4" id="page-title">
+      <h1 title="playwright-test" className="text-2xl font-bold mb-4" id="page-title">
         Form for Playwright Testing
       </h1>
 
@@ -106,6 +106,9 @@ const App = () => {
           type="text"
           id="text-input"
           name="textInput"
+          placeholder='Enter a value'
+          alt='text-input'
+          aria-label='textInput'
           value={formData.textInput}
           onChange={handleInputChange}
           aria-describedby="text-input-description"
@@ -224,7 +227,12 @@ const App = () => {
           <li>Item 1</li>
           <li>Item 2</li>
           <li>Item 3</li>
+          <button name='Submit' className="px-2 py-1 bg-blue-500 text-white rounded">Submit</button>
         </ul>
+      </div>
+      <div className="mt-6 pb-6">
+        <h3 className="text-xl mb-2">Example</h3>
+          <button name='Submit' className="px-2 py-1 bg-blue-500 text-white rounded">Submit</button>
       </div>
     </div>
   );
