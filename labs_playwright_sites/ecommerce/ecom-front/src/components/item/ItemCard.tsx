@@ -31,9 +31,9 @@ export default function ItemCard() {
     <div className="container mx-auto p-4">
       <Filters setProducts={setProducts} allProducts={allProducts} />
       <SearchBar setProducts={setProducts} />
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {products.map((product, key) => (
-          <div key={key} className="flex flex-col justify-between h-full border border-gray-200 rounded-lg overflow-hidden">
+          <li key={key} className="flex flex-col justify-between h-full border border-gray-200 rounded-lg overflow-hidden">
             <Link href={`/item/${product.id}`} className="block">
               <div className="w-54 h-72">
                 <Image src={product.image} width={500} height={500} alt={product.name} className="object-contain w-full h-full" />
@@ -45,15 +45,13 @@ export default function ItemCard() {
               </div>
             </Link>
             {product.stock > 0 ? (
-              <div className="p-4">
                 <AddToCartButton product={product} />
-              </div>
             ) : (
               <div className="p-4 text-blue-500 text-center">Out of Stock</div>
             )}
-          </div>
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   );
 }

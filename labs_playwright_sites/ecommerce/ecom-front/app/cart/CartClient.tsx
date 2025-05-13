@@ -58,7 +58,7 @@ export default function CartClient() {
         <div className="flex flex-col items-center justify-center mt-20">
           <p className="text-center">Your order is empty.</p>
           <Link href="/shop" className="w-full max-w-44">
-            <p className="text-center bg-blue-600 p-4 rounded-lg hover:bg-blue-500 mt-12">Continue Shopping</p>
+            <button className="text-center bg-blue-600 p-4 rounded-lg hover:bg-blue-500 mt-12">Continue Shopping</button>
           </Link>
         </div>
       ) : (
@@ -79,15 +79,26 @@ export default function CartClient() {
                   <p className="text-lg">{item.name}</p>
                 </div>
                 <div className="flex justify-between">
-                  <div className="flex items-center space-x-1 border-b-2 border-black p-0.5">
-                    <button onClick={() => handleDecrease(item)} className="text-gray-600">
-                      -
-                    </button>
-                    <span className="px-4">{item.quantity}</span>
-                    <button onClick={() => handleIncrease(item)} className="text-gray-600">
-                      +
-                    </button>
-                  </div>
+                <fieldset className="flex items-center space-x-1 border-b-2 border-black p-0.5">
+                <legend className="sr-only">Quantity for {item.name}</legend>
+                <button
+                  onClick={() => handleDecrease(item)}
+                  className="text-gray-600"
+                  aria-label={`Decrease quantity of ${item.name}`}
+                >
+                  -
+                </button>
+                    <span className="px-4" aria-live="polite" aria-atomic="true">
+                      {item.quantity}
+                    </span>
+                    <button
+                      onClick={() => handleIncrease(item)}
+                      className="text-gray-600"
+                      aria-label={`Increase quantity of ${item.name}`}
+                    >
+                    +
+                  </button>
+                  </fieldset>
                   <div className="text-sm pt-1">€{item.price}</div>
                 </div>
               </div>
@@ -99,7 +110,7 @@ export default function CartClient() {
       <div className="mt-6 text-right">
         {cart.length !== 0 && (
           <>
-            <p className="text-xl font-semibold">Subtotal: €{totalPrice}</p>
+            <p aria-label="subtotal" className="text-xl font-semibold">Subtotal: €{totalPrice}</p>
             <Link href="/checkout" onClick={() => postTotalPrice(totalPrice)}>
               <button className="mt-4 bg-blue-500 text-white px-4 py-2 rounded">Checkout</button>
             </Link>

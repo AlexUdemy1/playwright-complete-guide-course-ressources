@@ -1,9 +1,4 @@
-// export interface User {
-//     username: string,
-//     password: string
-// }
-
-// export const fakeUsers: User[] = [{ username: 'user', password: 'user_udemy_playwright' }];
+import bcrypt from 'bcrypt';
 
 export interface User {
     firstname: string;
@@ -17,7 +12,8 @@ export interface User {
     label?: string;
   }
   
-  export const users: User[] = [];
+
+  export const users: User[] = [{firstname: "admin", lastname: "admin", email: "admin@gmail.com", username: "admin", password: bcrypt.hashSync("admin", 10), postalCode: '75000', country: "FR", address: "xxx", }];
   
   export default users;
   

@@ -69,6 +69,8 @@ export default function RegisterPage() {
             <input
               type={name === 'password' ? 'password' : 'text'}
               {...register(name as keyof FormData)}
+              aria-label={name}
+              id={name}
               className="mt-1 w-full border rounded-xl px-3 py-2 text-sm"
             />
             {errors[name as keyof FormData] && (

@@ -1,3 +1,5 @@
+// Module 2 - Locators & Selectors
+
 import bcrypt from 'bcrypt';
 import { Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
@@ -35,7 +37,7 @@ export const login = async (req: Request, res: Response) => {
 
   const match = await bcrypt.compare(password, user.password);
   if (!match) {
-    return res.status(401).json({ message: 'Invalid credentials' });
+    return res.status(401).json({ message: 'Invalid credentials match' });
   }
 
   const token = jwt.sign({ email: user.email, username: user.username }, JWT_SECRET, { expiresIn: '1h' });
