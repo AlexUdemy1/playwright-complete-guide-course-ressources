@@ -27,23 +27,28 @@ test.describe('testing the Cart', () => {
     })
 
     test('Increase and Decrease Quantity in Cart', async ({page}) => {
-        await page.goto("http://localhost:3000/shop")
+        await page.goto("http://localhost:3000/shop");
+
+        // Arrange 
         const BmwX5Car = page.getByRole('listitem').filter({has: page.getByText(/BMW X5/i)}).getByRole('button', {name: /add to cart/i});
         const gotoCartIcon = page.getByRole('img', {name: 'cart icon'});
         const BmwX5CarInCart = page.getByRole('listitem').filter({has: page.getByText(/BMW X5/i)});
 
+        // Add car to the cart
         await BmwX5Car.click();
         await gotoCartIcon.click();
         await expect(BmwX5CarInCart).toBeVisible();
 
         // Increase Quantity by One and then remove quantity By One
-
-        // Function to increase or decrease a quantity in the Cart
+        /***
+         *  Function to increase or decrease a quantity in the Cart
+         */
         const addRemoveQuantity = (operation, car) => {
             return page.getByRole('button', {name: `${operation} quantity of ${car}`});
         }
-
-        // Function to find the quantity of a specific car in the Cart
+        /***
+         *  Function to find the quantity of a specific car in the Cart
+         */
         const carQuantity = (car) => { 
             return page.getByRole('group', {name: `Quantity for ${car}`})
                     .filter({has: page.locator("span[aria-live='polite']")}) 
@@ -54,21 +59,15 @@ test.describe('testing the Cart', () => {
         await expect(subtotal).toContainText("79998");
     });
 
-    test.beforeEach('teardow', async ({page}) => {
-        await page.goto("http://localhost:3000/cart");
-        const emptyCart = page.getByText('Continue Shopping');
-        // Function to increase or decrease a quantity in the Cart
-        const decreaseQuantity = async (car) => {
-            const button = page.getByRole('button', { name: new RegExp(`Decrease quantity of ${car}`, 'i') });
-            if (button.isVisible()) {
-              await button.click();
-            }
-          };
-        while(!(await emptyCart.isVisible())) {
-            for(let car of cars) {
-                decreaseQuantity(car);
-            }
-            await page.waitForTimeout(500);
+    test.afterEach('teardow', async ({context}) => {
+        const page = await context.newPage();
+        const response = await page.request.post('http://localhost:3001/cart/clear');
+        await page.close();
+
+        if (response.status() !== 200) {
+            console.warn('Cart reset failed with status:', response.status());
+        } else {
+            console.log('Cart reset successfully');
         }
     })
 });
