@@ -32,9 +32,8 @@ export default function LoginPage() {
       setError(data.message || 'Login failed');
     } else {
       setIsAuthenticated(true);
-      // You can store to localStorage if you want persistent login:
-      // localStorage.setItem('auth', 'true');
-      router.push('/'); // or wherever you want to go
+      localStorage.setItem('auth', 'true');
+      router.push('/shop'); // or wherever you want to go
     }
   };
 
@@ -47,6 +46,8 @@ export default function LoginPage() {
           <input
             type="email"
             name="email"
+            id='email'
+            aria-label='email'
             required
             value={formData.email}
             onChange={handleChange}
@@ -59,6 +60,8 @@ export default function LoginPage() {
           <input
             type="password"
             name="password"
+            id="password"
+            aria-label='password'
             required
             value={formData.password}
             onChange={handleChange}

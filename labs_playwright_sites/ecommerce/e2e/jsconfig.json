@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "esnext",
+    "checkJs": true,
+    "baseUrl": ".",
+    "moduleResolution": "node",
+    "paths": {
+      "*": ["node_modules/*"]
+    }
+  },
+  "include": [
+    "tests/**/*",
+    "playwright.config.js"
+  ]
+}
