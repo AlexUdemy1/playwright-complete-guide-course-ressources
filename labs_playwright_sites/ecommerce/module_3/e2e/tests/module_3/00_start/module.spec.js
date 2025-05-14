@@ -1,17 +1,4 @@
-import test, { expect } from "@playwright/test";
-
-const cars = [
-    {name: "BMW X5"},
-    {name: "Lotus Eletre" },
-    {name: "MERCEDES BENZ CLASS V"},
-    {name: "MERCEDES BENZ EQB"},
-    {name: "Mercedes Benz EQE"},
-    {name: "RENAULT CAPTUR"},
-    {name: "Renaud Clio"},
-    {name: "Tesla Model Y"},
-    {name: "Volkswagen Polo"},
-    {name: "Volkswagen Taigo"},
-]
+import { expect, test } from "@playwright/test";
 
 test.describe('testing the Cart', () => {
     test.beforeEach(async ({page}) => {
@@ -26,14 +13,13 @@ test.describe('testing the Cart', () => {
         await loginBtn.click();
     })
 
-    test('Increase and Decrease Quantity in Cart', async ({page}) => {
+    test('should be able to Increase Quantity in Cart', async ({page}) => {
         await page.goto("http://localhost:3000/shop");
 
         // Arrange 
         const BmwX5Car = page.getByRole('listitem').filter({has: page.getByText(/BMW X5/i)}).getByRole('button', {name: /add to cart/i});
         const gotoCartIcon = page.getByRole('img', {name: 'cart icon'});
         const BmwX5CarInCart = page.getByRole('listitem').filter({has: page.getByText(/BMW X5/i)});
-
         // Add car to the cart
         await BmwX5Car.click();
         await gotoCartIcon.click();
