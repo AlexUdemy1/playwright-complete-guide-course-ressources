@@ -1,12 +1,16 @@
-# React + Vite
+# Playwright Practice
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Get the project from github to your local repository into you computer
 
-Currently, two official plugins are available:
+First, you can open VS Code and open a new terminal. 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+With the cd command, move to the folder you want to download the project into. (Hit Tab to display the content of your current folder or autocomplete the folder's name)
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Now, run the following commands in you terminal 
+```bash
+git init
+git clone https://github.com/AlexUdemy1/playwright-complete-guide-course-ressources.git
+cd playwright-complete-guide-course-ressources/labs_playwright_sites/playwright-practice
+npm install
+npm run dev
+```
